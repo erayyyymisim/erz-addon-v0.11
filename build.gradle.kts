@@ -27,8 +27,8 @@ dependencies {
     mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:0.16.9")
 
-    // Meteor Client dependency (JitPack yedekli)
-    modImplementation("com.github.MeteorDevelopment:meteor-client:0.6.0")
+    // Meteor Client bağımlılığı (Doğru depo ve paket adı)
+    modImplementation("meteordevelopment:meteor-client:0.6.0-SNAPSHOT")
 }
 
 tasks.withType<JavaCompile>().configureEach {
