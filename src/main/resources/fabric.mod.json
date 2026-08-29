@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "erz-addon",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "Erz Addon",
+  "description": "Meteor Client addon.",
   "authors": [
-    "seasnail"
+    "eray"
   ],
   "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "sources": "https://github.com/erayyyymisim/erz-addon-v0.11"
   },
   "icon": "assets/template/icon.png",
   "environment": "client",
@@ -30,8 +30,7 @@
   },
   "depends": {
     "fabricloader": ">=0.15.0",
-    "minecraft": "~1.21.4",
-    "java": ">=21"
-  }
+    "minecraft": "${minecraft_version}",
+    "java": ">=${jdk_version}"
   }
 }
