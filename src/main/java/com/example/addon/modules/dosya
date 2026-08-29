@@ -1,0 +1,31 @@
+package com.example.addon.modules;
+
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.ChestBlockEntity;
+import net.minecraft.block.entity.EnderChestBlockEntity;
+import meteordevelopment.meteorclient.events.world.TickEvent;
+import meteordevelopment.meteorclient.systems.modules.Category;
+import meteordevelopment.meteorclient.systems.modules.Module;
+import meteordevelopment.orbit.EventHandler;
+
+public class BaseScanModule extends Module {
+    public BaseScanModule() {
+        super(Category.World, "base-scan", "Yakındaki base olabilecek blokları tarar.");
+    }
+
+    @EventHandler
+    private void onTick(TickEvent.Post event) {
+        if (mc.world == null || mc.player == null) return;
+
+        int chestCount = 0;
+        for (BlockEntity blockEntity : mc.world.blockEntities) {
+            if (blockEntity instanceof ChestBlockEntity || blockEntity instanceof EnderChestBlockEntity) {
+                chestCount++;
+            }
+        }
+
+        if (chestCount >= 5) {
+            info("Yakında potansiyel bir base bulundu! Sandık sayısı: " + chestCount);
+        }
+    }
+}
