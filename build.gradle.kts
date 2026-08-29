@@ -29,12 +29,9 @@ dependencies {
 
     // Meteor
     implementation(libs.meteor.client)
-}
-
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get().toInt()))
-    }
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 fun toMinecraftCompat(version: String): String {
@@ -63,8 +60,15 @@ tasks {
         val propertyMap = mapOf(
             "version" to project.version,
             "minecraft_version" to toMinecraftCompat(libs.versions.minecraft.get()),
-            "jdk_version" to libs.versions.jdk.get(),
+            "jdk_version" to "21",
         )
+        inputs.properties(propertyMap)
+        filteringCharset("UTF-8")
+        filesMatching("fabric.mod.json") {
+            expand(propertyMap)
+        }
+    }
+}
 
         inputs.properties(propertyMap)
         filesMatching("fabric.mod.json") {
