@@ -3,14 +3,11 @@
   "id": "erz-addon",
   "version": "${version}",
   "name": "Erz Addon",
-  "description": "Meteor Client addon.",
-  "authors": [
-    "eray"
-  ],
+  "description": "A Meteor Client addon for Minecraft 1.21.4",
+  "authors": ["erayyyymisim"],
   "contact": {
     "sources": "https://github.com/erayyyymisim/erz-addon-v0.11"
   },
-  "icon": "assets/template/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
@@ -30,7 +27,7 @@
   },
   "depends": {
     "fabricloader": ">=0.15.0",
-    "minecraft": "${minecraft_version}",
-    "java": ">=${jdk_version}"
+    "minecraft": "1.21.4",
+    "java": ">=21"
   }
 }
