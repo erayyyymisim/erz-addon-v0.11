@@ -1,9 +1,10 @@
-name: Build Addon
+name: Build
 
 on:
   push:
-    branches: [ "*" ]
-  workflow_dispatch:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
 
 jobs:
   build:
