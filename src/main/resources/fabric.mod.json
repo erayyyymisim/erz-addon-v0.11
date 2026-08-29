@@ -18,12 +18,7 @@
     "addon-template.mixins.json"
   ],
   "custom": {
-    "meteor-client:color": "225,25,25",
-    "modmenu": {
-      "parent": {
-        "id": "meteor-client"
-      }
-    }
+    "meteor-client:color": "225,25,25"
   },
   "depends": {
     "fabricloader": ">=0.15.0",
