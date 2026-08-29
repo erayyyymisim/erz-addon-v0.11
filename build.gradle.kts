@@ -1,3 +1,22 @@
+'ll analyze the failing job to find a solution. Let me start by getting the job logs.
+
+
+Job 99035060842 in erayyyymisim/erz-addon-v0.11
+The build is failing due to a syntax error in your build.gradle.kts file at line 95. The error message indicates an "Unexpected symbol" at the closing brace }.
+
+Let me examine the build file to identify the exact issue:
+
+
+View file build.gradle.kts
+Solution
+The build failure is caused by syntax errors in build.gradle.kts at line 95. There are two main issues:
+
+Missing closing brace for dependencies block (line 31): The dependencies block that starts at line 25 is not properly closed before the java block begins at line 32.
+
+Duplicate code block (lines 73-77): The processResources task configuration is duplicated and malformed, with orphaned code outside any block.
+
+Fixed build.gradle.kts:
+Kotlin
 plugins {
     alias(libs.plugins.fabric.loom)
 }
@@ -29,6 +48,8 @@ dependencies {
 
     // Meteor
     implementation(libs.meteor.client)
+}
+
 java {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
@@ -68,13 +89,6 @@ tasks {
             expand(propertyMap)
         }
     }
-}
-
-        inputs.properties(propertyMap)
-        filesMatching("fabric.mod.json") {
-            expand(propertyMap)
-        }
-    }
 
     jar {
         inputs.property("archivesName", archivesBaseName)
@@ -93,3 +107,8 @@ tasks {
         )
     }
 }
+Key changes:
+
+Added missing closing brace } after line 31 to properly close the dependencies block
+Removed the duplicate/malformed processResources configuration (lines 73-77)
+Kept all logic intact within the properly structured tasks block
