@@ -10,11 +10,15 @@ repositories {
     mavenCentral()
     maven {
         name = "meteor-maven"
-        url = uri("https://maven.meteorclient.com/releases")
+        url = uri("https://maven.meteordev.org/releases")
     }
     maven {
         name = "meteor-maven-snapshots"
-        url = uri("https://maven.meteorclient.com/snapshots")
+        url = uri("https://maven.meteordev.org/snapshots")
+    }
+    maven {
+        name = "jitpack"
+        url = uri("https://jitpack.io")
     }
 }
 
@@ -22,7 +26,9 @@ dependencies {
     minecraft("com.mojang:minecraft:1.21.4")
     mappings(loom.officialMojangMappings())
     modImplementation("net.fabricmc:fabric-loader:0.16.9")
-    modImplementation("meteordevelopment:meteor-client:0.6.0-SNAPSHOT")
+
+    // Meteor Client dependency (JitPack yedekli)
+    modImplementation("com.github.MeteorDevelopment:meteor-client:0.6.0")
 }
 
 tasks.withType<JavaCompile>().configureEach {
