@@ -1,15 +1,13 @@
-name: Build
+name: Build Meteor Addon
 
 on:
   push:
     branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -23,10 +21,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: meteor-addon
+          name: meteor-addon-jar
           path: build/libs/*.jar
